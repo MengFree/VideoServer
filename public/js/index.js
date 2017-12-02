@@ -1,10 +1,17 @@
 $(function() {
+    var $pathname = window.location.pathname;
+    $(".nav-pills a").each(function() {
+        console.log($(this).attr('href'))
+        if ($(this).attr('href') == $pathname) {
+            $(this).parent().addClass('active');
+        }
+    })
     $("body").on('click', '.btn-paly', function() {
         var id = $(this).attr('data-id');
         $.get('/api/getPath?id=' + id).then(function(res) {
             $("#alert").attr('src', res);
             $('#mod').modal('show');
-        })
+        });
     })
     $("#videoPlayer").click(function() {
         const VP = document.getElementById('videoPlayer')
@@ -26,7 +33,6 @@ $(function() {
         if (key == '') return $("#result").addClass('hide');
         var arr = key.split(' ');
         var li = $("#box .list-group-item");
-        var result = [];
         for (var i = 0; i < arr.length; i++) {
             var w = arr[i];
             if (w == '') continue;
@@ -53,17 +59,17 @@ $(function() {
 
 })
 
-function creatImg() {
-    const video = document.getElementById('videoPlayer');
-    const canvas = document.createElement('canvas');
-    const ctx = canvas.getContext('2d');
-    const imgHeight = video.videoHeight;
-    const imgWidth = video.videoWidth;
-    ctx.drawImage(video, 0, 0, imgWidth, imgHeight);
+// function creatImg() {
+//     const video = document.getElementById('videoPlayer');
+//     const canvas = document.createElement('canvas');
+//     const ctx = canvas.getContext('2d');
+//     const imgHeight = video.videoHeight;
+//     const imgWidth = video.videoWidth;
+//     ctx.drawImage(video, 0, 0, imgWidth, imgHeight);
 
-    const imgSrc = canvas.toDataURL('image/png');
-    var img = document.createElement('img')
-    img = $(img).attr('src', imgSrc);
-    $('body').append(img);
-    console.log(imgSrc);
-}
+//     const imgSrc = canvas.toDataURL('image/png');
+//     var img = document.createElement('img')
+//     img = $(img).attr('src', imgSrc);
+//     $('body').append(img);
+//     console.log(imgSrc);
+// }

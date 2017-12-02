@@ -13,11 +13,15 @@ html
     link(rel="stylesheet", href="/css/bootstrap.min.css")
   body
     div(class="box" style="padding:25px 45px;")
-      ol.breadcrumb
-        li
-          a(href="/") home 
-        li
-          a(href="/search") 全站搜索 
+      if urls
+        ul.nav.nav-pills
+          each url in urls
+            li
+              a(href='/' + url) #{url}
+              
+          li
+            a(href="/search") 全站搜索 
+        
     block content
 
     script(src="/js/jquery-3.2.1.min.js")

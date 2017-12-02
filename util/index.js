@@ -1,11 +1,9 @@
 const fs = require('fs'),
-    path = require('path'),
-    glob = require('glob');
+    path = require('path');
 var uid = 0,
     fid = 0;
 const getFiles = function getFiles($path, id) {
     id = id ? id + '-' : '';
-    var $dir = [];
     var $file = {
         path: $path,
         files: [],
@@ -14,7 +12,6 @@ const getFiles = function getFiles($path, id) {
         name: path.basename($path),
         fid: id + (fid++)
     };
-    var dir = [];
     var files = fs.readdirSync($path);
     for (var i = 0; i < files.length; i++) {
         if (files[i].indexOf('.') == 0 || files[i].indexOf('node_modules') > -1) continue;

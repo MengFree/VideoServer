@@ -21,9 +21,7 @@ function renderList(res, list, key) {
         file: function(src) {
             return src.split(key)[1];
         },
-        urls: function() {
-            return Object.keys(filePaths);
-        }
+        urls: Object.keys(filePaths)
     });
 };
 
@@ -35,8 +33,6 @@ for (var k in filePaths) {
     all = all.concat(util.inline(files[k]));
     (function(k) {
         router.get('/' + k, function(req, res) {
-            if (k == conf.index) return res.redirect('/');
-
             var folderId = req.query.folder;
             var list = files[k];
             if (folderId) {
@@ -51,13 +47,7 @@ for (var k in filePaths) {
  * 默认主页
  */
 router.get('/', function(req, res) {
-    var folderId = req.query.folder;
-    var home = files[conf.index];
-    var list = home;
-    if (folderId) {
-        list = util.getList(home, folderId.replace(home.fid + '-', ''), [home.fid]);
-    }
-    renderList(res, list, conf.index);
+    return res.redirect('/' + conf.index);
 });
 
 /**
@@ -66,6 +56,7 @@ router.get('/', function(req, res) {
 router.get('/search', function(req, res) {
     res.render('search', {
         title: '全站搜索',
+        urls: Object.keys(filePaths)
     });
 });
 
