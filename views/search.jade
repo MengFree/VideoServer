@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  .main
+    .form-group
+      .input-group
+        input#searchAll.form-control(type='search',placeholder="全站搜索！！！！！！")
+        #searchAll-btn.input-group-addon 搜搜
+    blockquote 找到&emsp;
+      strong#num 0
+      | &emsp;个视频
+    #result.list-group.hide
+  include ./videoAlert.jade
+
+block ft-script
+  script(src="/js/seach.js")
+  script(src="/js/index.js")

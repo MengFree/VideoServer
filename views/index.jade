@@ -1,0 +1,27 @@
+extends layout
+
+block content
+  .main
+    .form-group
+      .input-group
+        input#search.form-control(type='search',placeholder="本页搜索！！！！！！")
+        #search-btn.input-group-addon 搜搜
+    #result.list-group.hide
+    
+    #box.list-group
+      each child in list.child 
+        .list-group-item(style='word-break: break-all;word-wrap: break-word;')
+          span.glyphicon.glyphicon-folder-open(style='margin-right:1em;')
+          a(href='?folder=#{child.fid}') #{name(child.path)}
+      each dir in list.files 
+        .list-group-item(style='word-break: break-all;word-wrap: break-word;')
+          span.glyphicon.glyphicon-film(style='margin-right:1em;')
+          a(href='/paly/#{dir.id}') #{name(dir.path)}
+          button.btn.btn-primary.btn-xs.btn-paly(data-id=dir.id)
+            span.glyphicon.glyphicon-play
+
+  include ./videoAlert.jade
+  
+
+block ft-script
+  script(src="/js/index.js")

@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  if err
+    h1 找不到该资源！！！
+  else
+    h1 #{title}
+    video#videoPlayer(src="#{src}",controls)
+
+block ft-script
+  script(src="/js/index.js")

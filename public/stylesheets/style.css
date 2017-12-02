@@ -1,0 +1,42 @@
+body {
+    /* padding: 50px; */
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+* {
+    word-break: break-all;
+    word-wrap: break-word;
+}
+
+h1 {
+    text-align: center;
+}
+
+.main {
+    padding: 1em 2em;
+}
+
+a {
+    color: #00B7FF;
+}
+
+.hide {
+    display: none;
+}
+
+#result .list-group-item {
+    /* border: 1px solid #883737; */
+    background-color: rgba(222, 222, 222, 0.71);
+}
+
+#videoPlayer {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+}
+
+.btn.btn-paly {
+    display: block;
+    margin-top: 10px;
+}
